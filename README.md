@@ -7,4 +7,6 @@
 | `3dsMax/` | MAXScript и Python для 3ds Max |
 | `3dsMax/Claude Environment/Project/<Проект>/` | проект целиком: Tools/, Docs/, Source/ и Export/ (Git LFS), Unity/Editor/ |
 
-Проекты: [3D-Assistant](3dsMax/Claude%20Environment/Project/3D-Assistant/README.md) — арт-пайплайн VR Shooter (Bot6).
+> **Проект Vein VR (бывш. папка 3D-Assistant) с 19.11.2026 ведётся в отдельном репозитории:
+> [cybercalmsystem-creator/vein-art](https://github.com/cybercalmsystem-creator/vein-art)** — история перенесена.
+> Папка `3dsMax/Claude Environment/Project/3D-Assistant` здесь — архив, новых коммитов в неё нет.
