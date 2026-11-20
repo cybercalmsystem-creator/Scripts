@@ -731,7 +731,9 @@ class HAIRSTRANDS_OT_draw(bpy.types.Operator):
     """ЛКМ — вести по модели. ПКМ / Esc — выход"""
     bl_idname = "hair_strands.draw"
     bl_label = "Рисовать пряди"
-    bl_options = {'REGISTER', 'UNDO'}
+    # без 'UNDO': шаг отмены пишется на каждую прядь в _end_stroke,
+    # иначе выход из режима добавлял пустой шаг и первый Ctrl+Z ничего не делал
+    bl_options = {'REGISTER'}
 
     def _region_at(self, context, mx, my):
         for area in context.window.screen.areas:
