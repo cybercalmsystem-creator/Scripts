@@ -814,9 +814,26 @@ class HAIRSTRANDS_OT_draw(bpy.types.Operator):
             create_strand(context, g, 0, p)
         finally:
             S.busy = False
-        bpy.ed.undo_push(message="Hair strand")
+        # отдельный шаг Ctrl+Z на каждую прядь
+        try:
+            bpy.ops.ed.undo_push(message="Hair strand")
+        except Exception:
+            pass
 
     def modal(self, context, event):
+        try:
+            return self._modal(context, event)
+        except Exception:
+            # при любой ошибке — корректно выйти из режима рисования
+            self.pts = []
+            try:
+                self._finish(context)
+            except Exception:
+                S.drawing = False
+                S.stop = False
+            raise
+
+    def _modal(self, context, event):
         if S.stop or (event.type in {'RIGHTMOUSE', 'ESC'} and event.value == 'PRESS'):
             self.pts = []
             self._finish(context)
